@@ -14,7 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         final Timer timer = new Timer();
-        final var valeryImpl = new CosneanuValeriuImpl(AUDIO_FILE_PATH, timer);
+        final CosneanuValeriuImpl valeryImpl = new CosneanuValeriuImpl(AUDIO_FILE_PATH, timer);
 
         final LocalDateTime necessaryTime = LocalDateTime.of(LocalDate.now(), LocalTime.now());
 
