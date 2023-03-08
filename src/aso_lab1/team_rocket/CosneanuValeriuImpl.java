@@ -14,7 +14,6 @@ import static aso_lab1.team_rocket.logger.Log.infoFormat;
  * Custom Implementation of TimerTask for ASO lab 1
  */
 public class CosneanuValeriuImpl extends TimerTask {
-
     private final Timer timer;
     private Clip audioClip;
     private long duration = 0;

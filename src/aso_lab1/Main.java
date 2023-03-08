@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Timer;
-import java.util.TimerTask;
 
 import static java.sql.Timestamp.valueOf;
 
@@ -15,8 +14,12 @@ public class Main {
 
     public static void main(String[] args) {
         final Timer timer = new Timer();
-        final TimerTask task = new CosneanuValeriuImpl(AUDIO_FILE_PATH, timer);
-        timer.schedule(task, valueOf(LocalDateTime.of(LocalDate.now(), LocalTime.now())));
+        final var valeryImpl = new CosneanuValeriuImpl(AUDIO_FILE_PATH, timer);
+
+        final LocalDateTime necessaryTime = LocalDateTime.of(LocalDate.now(), LocalTime.now());
+
+        timer.schedule(valeryImpl, valueOf(necessaryTime));
+
     }
 
 }

@@ -22,6 +22,7 @@ public abstract class Log {
      * Static initialization (add possibility to save logs in file mylog.log)
      */
     static {
+        my_log.setUseParentHandlers(false);
         FileHandler fileHandler = null;
         try {
             fileHandler = new FileHandler("mylog.log");
