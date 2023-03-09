@@ -15,7 +15,7 @@ public class Money extends TimerTask {
     }
 
     public void run() {
-        int amount = (int)(Math.random() * 1000);
+        int amount = (int)(Math.random() * 1000);   //Math.random() генерирует от 0 - 1 , умножаем на 1000 и получаем результат от 0 до 1000
         balance += amount;
         System.out.println("Dobavleno " + amount + " deneg. Balans: " + balance);
         if (balance >= GOAL) {
@@ -32,13 +32,13 @@ public class Money extends TimerTask {
             Clip clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             clip.start();
-            while (!clip.isRunning()) {
+            while (!clip.isRunning()) {   //ждет пока не начнет проигрывание
                 Thread.sleep(10);
             }
-            while (clip.isRunning()) {
+            while (clip.isRunning()) {    //ждет пока музыка закончится
                 Thread.sleep(10);
             }
-            clip.close();
+            clip.close();             //закрыть аудиопоток
             audioInputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
