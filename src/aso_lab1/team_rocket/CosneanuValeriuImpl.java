@@ -25,8 +25,6 @@ public class CosneanuValeriuImpl extends TimerTask {
      * @param timer timer what should be bound with TimerTask
      */
     public CosneanuValeriuImpl(final String path, Timer timer) {
-        info("CONSTRUCTOR IS RUNNING");
-
         this.timer = timer;
         final File audioFile = new File(path);
 
@@ -57,7 +55,7 @@ public class CosneanuValeriuImpl extends TimerTask {
     public void run() {
         try {
             audioClip.start();
-            info("METHOD: {run} IS RUNNING");
+            info("METHOD: {"+new Object(){}.getClass().getEnclosingMethod().getName()+"} IS RUNNING");
             Thread.sleep(audioClip.getMicrosecondLength() / 1000);
             audioClip.stop();
             audioClip.setFramePosition(0);
