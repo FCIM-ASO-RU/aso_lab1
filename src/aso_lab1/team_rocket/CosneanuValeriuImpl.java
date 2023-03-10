@@ -25,6 +25,7 @@ public class CosneanuValeriuImpl extends TimerTask {
      * @param timer timer what should be bound with TimerTask
      */
     public CosneanuValeriuImpl(final String path, Timer timer) {
+
         this.timer = timer;
         final File audioFile = new File(path);
 
@@ -34,7 +35,7 @@ public class CosneanuValeriuImpl extends TimerTask {
             final DataLine.Info info = new DataLine.Info(Clip.class, format);
             audioClip = (Clip) AudioSystem.getLine(info);
             audioClip.open(audioStream);
-            duration = audioClip.getMicrosecondLength() / 1_000_000;
+            duration = audioClip.getMicrosecondLength() / 1000;
         } catch (Exception exception) {
             infoFormat("[ CONSTRUCTOR THROW EXCEPTION: {%s}]", exception.toString());
         }
@@ -53,17 +54,15 @@ public class CosneanuValeriuImpl extends TimerTask {
      */
     @Override
     public void run() {
-        try {
-            audioClip.start();
-            info("METHOD: {"+new Object(){}.getClass().getEnclosingMethod().getName()+"} IS RUNNING");
-            Thread.sleep(audioClip.getMicrosecondLength() / 1000);
-            audioClip.stop();
-            audioClip.setFramePosition(0);
+        audioClip.start();
+        info("METHOD: {" + new Object() {
+        }.getClass().getEnclosingMethod().getName() + "} IS RUNNING");
+    }
 
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            timer.cancel();
-            infoFormat("ERROR PLAYING AUDIO {%s}", e.toString());
-        }
+    @Override
+    public boolean cancel() {
+        audioClip.stop();
+        audioClip.setFramePosition(0);
+        return super.cancel();
     }
 }
