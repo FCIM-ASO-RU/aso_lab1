@@ -61,6 +61,8 @@ public class CosneanuValeriuImpl extends TimerTask {
 
     @Override
     public boolean cancel() {
+        info("METHOD: {" + new Object() {
+        }.getClass().getEnclosingMethod().getName() + "} FINISHED");
         audioClip.stop();
         audioClip.setFramePosition(0);
         return super.cancel();

@@ -42,4 +42,11 @@ public class RaminGashimovImpl extends TimerTask {
         Graphics g = frame.getGraphics();
         g.drawImage(image, 0, 0, null);
     }
+
+    @Override
+    public boolean cancel() {
+        info("METHOD: {" + new Object() {
+        }.getClass().getEnclosingMethod().getName() + "} FINISHED");
+        return super.cancel();
+    }
 }

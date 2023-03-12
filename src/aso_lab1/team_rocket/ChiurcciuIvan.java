@@ -86,31 +86,11 @@ public class ChiurcciuIvan extends TimerTask {
             }
             currentLine++;
         }
-//        if (currentLine < lyrics.length) {
-//            info("METHOD: {" + new Object() {
-//            }.getClass().getEnclosingMethod().getName() + "} IS RUNNING");
-//
-//            final String music = "За деньги - да, день-день-день-деньги - да, да…";
-//            if (music.equals(lyrics[currentLine])) {
-//                try {
-//                    Thread.sleep(3800);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//            final String afterMusic = "Это я в Дубае, я ща отдыхаю";
-//
-//            if (afterMusic.equals(lyrics[currentLine])) {
-//                try {
-//                    Thread.sleep(6050);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//            System.out.println(lyrics[currentLine]);
-//            currentLine++;
-//        } else {
-//            cancel();
-//        }
+    }
+    @Override
+    public boolean cancel() {
+        info("METHOD: {" + new Object() {
+        }.getClass().getEnclosingMethod().getName() + "} FINISHED");
+        return super.cancel();
     }
 }

@@ -16,7 +16,7 @@ public class Main {
     private static final String AUDIO_FILE_PATH = ".//Resources/static/audio/INSTASAMKA.wav";
     private static final String IMAGE_PATH = ".//Resources/static/images/INSTASAMKA.jpg";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         final Timer timer = new Timer();
         final LocalDateTime necessaryTime = LocalDateTime.of(LocalDate.now(), LocalTime.now());
         final CosneanuValeriuImpl valeryImpl = new CosneanuValeriuImpl(AUDIO_FILE_PATH, timer);
@@ -27,6 +27,10 @@ public class Main {
         timer.schedule(raminImpl, valueOf(necessaryTime), valeryImpl.getDuration());
         timer.schedule(valeryImpl, valueOf(necessaryTime));
         timer.schedule(vaneaImpl, valueOf(necessaryTime.plusSeconds(18)));
-
+        Thread.sleep(valeryImpl.getDuration());
+        valeryImpl.cancel();
+        raminImpl.cancel();
+        vaneaImpl.cancel();
+        timer.cancel();
     }
 }
