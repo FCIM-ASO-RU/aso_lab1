@@ -1,0 +1,49 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.Scanner;
+
+public class ScheduleTimer {
+    private List<Lesson> lessons;
+
+    public ScheduleTimer(String scheduleFilePath) throws FileNotFoundException {
+        // Чтение расписания из документа и сохранение его в List
+        File scheduleFile = new File(scheduleFilePath);
+        Scanner scanner = new Scanner(scheduleFile);
+        this.lessons = new ArrayList<>();
+        while (scanner.hasNextLine()) {
+            String[] lessonData = scanner.nextLine().split(",");
+            Lesson lesson = new Lesson(LocalTime.parse(lessonData[0], DateTimeFormatter.ofPattern("HH:mm")), lessonData[1]);
+            this.lessons.add(lesson);
+        }
+        scanner.close();
+
+        // Создание объектов TimerTask для оповещения о начале занятий и о начале занятий за 15 минут до начала
+        TimerTask startLessonTask = new TimerTask() {
+            @Override
+            public void run() {
+                Lesson currentLesson = getCurrentLesson();
+                System.out.println("Начало занятия: " + currentLesson.getName());
+            }
+        };
+
+        TimerTask startLesson15MinTask = new TimerTask() {
+            @Override
+            public void run() {
+                Lesson nextLesson = getNextLesson();
+                System.out.println("Занятие " + nextLesson.getName() + " начнется через 15 минут");
+            }
+        };
+
+        // Установка запуска TimerTask в определенное время
+        LocalDateTime now = LocalDateTime.now();
+        LocalTime startTime = now.toLocalTime();
+        int delay = (60 - startTime.getSecond()) * 1000; // Задержка до первой проверки времени
+        Timer timer = new Timer();
+        timer.scheduleAtFixed
