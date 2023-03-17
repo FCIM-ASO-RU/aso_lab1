@@ -10,7 +10,9 @@ public class Main {
         TimerTask taskPrisacari = new PrisacariSerghei();
         timer.schedule(taskPrisacari, 2000);
         TimerTask taskFiodorov = new Fiodorov();
-        timer.schedule(taskPrisacari, 4000);
+        timer.schedule(taskFiodorov, 4000);
+        TimerTask taskMalanciuc = new MalanciucDmitrii();
+        timer.schedule(taskMalanciuc, 6000);
     }
 
 }
