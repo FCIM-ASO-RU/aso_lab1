@@ -9,7 +9,7 @@ import java.util.TimerTask;
 
 public class Fiodorov extends TimerTask{
 
-    private static final String CSV_FILE_PATH = "..\\aso_lab1\\src\\schedule.csv";
+    private static final String CSV_FILE_PATH = ".\\aso_lab1\\src\\schedule.csv";
     private static final long MINUTES_15_IN_MILLIS = 900_000L;
 
 
