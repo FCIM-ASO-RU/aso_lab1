@@ -4,7 +4,7 @@ import java.util.TimerTask;
 
 public class PrisacariSerghei extends TimerTask {
 
-    @Override
+
     public void run() {
         String username = System.getProperty("user.name");
         System.out.println("First task by PrisacariSerghei");
