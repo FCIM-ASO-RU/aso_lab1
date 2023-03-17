@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         final Timer timer = new Timer();
         TimerTask taskPrisacari = new PrisacariSerghei();
-        timer.schedule(taskPrisacari, 10000);
+        timer.schedule(taskPrisacari, 2000);
 
     }
     
