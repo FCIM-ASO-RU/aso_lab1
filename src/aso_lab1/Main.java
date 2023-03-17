@@ -9,7 +9,8 @@ public class Main {
         final Timer timer = new Timer();
         TimerTask taskPrisacari = new PrisacariSerghei();
         timer.schedule(taskPrisacari, 2000);
-
+        TimerTask taskFiodorov = new Fiodorov();
+        timer.schedule(taskPrisacari, 4000);
     }
-    
+
 }
